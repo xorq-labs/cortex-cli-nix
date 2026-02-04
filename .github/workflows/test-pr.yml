@@ -34,7 +34,7 @@ jobs:
       - name: Setup Nix cache
         uses: cachix/cachix-action@v15
         with:
-          name: cortex-cli
+          name: xorq-labs
           skipPush: true
 
       - name: Build cortex-cli

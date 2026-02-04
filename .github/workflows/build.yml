@@ -38,7 +38,7 @@ jobs:
     - uses: cachix/cachix-action@v15
       if: github.ref == 'refs/heads/main'
       with:
-        name: cortex-cli
+        name: xorq-labs
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
 
     - name: Build cortex-cli
@@ -49,7 +49,7 @@ jobs:
     - name: Push to Cachix
       if: github.ref == 'refs/heads/main'
       run: |
-        nix build .#cortex-cli --json | jq -r '.[].outputs.out' | cachix push cortex-cli
+        nix build .#cortex-cli --json | jq -r '.[].outputs.out' | cachix push xorq-labs
 
     - name: Test cortex-cli
       run: |

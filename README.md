@@ -129,8 +129,8 @@ To download pre-built binaries instead of compiling:
 # Install cachix if you haven't already
 nix-env -iA cachix -f https://cachix.org/api/v1/install
 
-# Configure the cortex-cli cache
-cachix use cortex-cli
+# Configure the xorq-labs cache
+cachix use xorq-labs
 ```
 
 Or add to your Nix configuration:
@@ -138,8 +138,8 @@ Or add to your Nix configuration:
 ```nix
 {
   nix.settings = {
-    substituters = [ "https://cortex-cli.cachix.org" ];
-    trusted-public-keys = [ "cortex-cli.cachix.org-1:YOUR_PUBLIC_KEY_HERE" ];
+    substituters = [ "https://xorq-labs.cachix.org" ];
+    trusted-public-keys = [ "xorq-labs.cachix.org-1:yw5TptZAA4ry8WZ8VEAy4e4T8bdIhoeiLC5YlR5cOo4=" ];
   };
 }
 ```
