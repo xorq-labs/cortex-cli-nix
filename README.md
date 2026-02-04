@@ -144,6 +144,65 @@ Or add to your Nix configuration:
 }
 ```
 
+## Version Pinning
+
+Pin to specific Cortex CLI versions using git refs. This allows you to control exactly which version you use.
+
+### Available Tags
+
+| Tag | Example | Behavior |
+|-----|---------|----------|
+| `vX.Y.Z+BUILD.HASH` | `v1.0.5+022417.2cafbd3cf8db` | Exact version (immutable) |
+| `vX.Y.Z` | `v1.0.5` | Latest build for that version (updates automatically) |
+| `vX` | `v1` | Latest in major series (updates automatically) |
+| `latest` | `latest` | Always newest version (updates automatically) |
+
+### Usage Examples
+
+```bash
+# Always latest (default)
+nix run github:xorq-labs/cortex-cli-nix
+
+# Pin to exact version with build
+nix run github:xorq-labs/cortex-cli-nix?ref=v1.0.5+022417.2cafbd3cf8db
+
+# Track latest build of v1.0.5 (auto-updates)
+nix run github:xorq-labs/cortex-cli-nix?ref=v1.0.5
+
+# Track latest v1.x (auto-updates within major version)
+nix run github:xorq-labs/cortex-cli-nix?ref=v1
+
+# Explicit latest
+nix run github:xorq-labs/cortex-cli-nix?ref=latest
+```
+
+### In Flake Inputs
+
+```nix
+{
+  inputs = {
+    # Always latest
+    cortex-cli.url = "github:xorq-labs/cortex-cli-nix";
+
+    # Pin to exact version
+    cortex-cli.url = "github:xorq-labs/cortex-cli-nix?ref=v1.0.5+022417.2cafbd3cf8db";
+
+    # Track major.minor version
+    cortex-cli.url = "github:xorq-labs/cortex-cli-nix?ref=v1.0.5";
+
+    # Track major version
+    cortex-cli.url = "github:xorq-labs/cortex-cli-nix?ref=v1";
+  };
+}
+```
+
+### Automatic Tag Creation
+
+Tags are automatically created and updated after each successful build:
+- **Exact version tags** (like `v1.0.5+022417.2cafbd3cf8db`) are created once and never change
+- **Moving tags** (like `v1.0.5`, `v1`, `latest`) are updated to point to the newest matching version
+- All tags are created within 1 hour of a new version being released
+
 ## Technical Details
 
 ### Package Architecture
