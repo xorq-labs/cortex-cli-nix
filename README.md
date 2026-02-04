@@ -124,12 +124,6 @@ Advantages over official installer (`curl ... | sh`):
 
 ## Troubleshooting
 
-**Command not found?** Ensure `~/.nix-profile/bin` is in your PATH:
-
-```bash
-export PATH="$HOME/.nix-profile/bin:$PATH"
-```
-
 **Node.js requirement:** Bundled with package (Node.js 22 LTS), no separate install needed.
 
 ## License

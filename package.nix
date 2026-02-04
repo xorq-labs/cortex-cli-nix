@@ -9,7 +9,6 @@
 , nodejs_22
 , cacert
 , bash
-, autoPatchelfHook
 }:
 
 let
@@ -55,12 +54,10 @@ stdenv.mkDerivation rec {
   pname = "cortex-cli";
   inherit version src;
 
-  nativeBuildInputs = [ nodejs_22 cacert ]
-    ++ lib.optionals stdenv.isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = [ nodejs_22 cacert ];
 
-  buildInputs = lib.optionals stdenv.isLinux [
-    stdenv.cc.cc.lib
-  ];
+  # Don't strip the binary - it's a Bun executable with bundled code
+  dontStrip = true;
 
   sourceRoot = ".";
 
