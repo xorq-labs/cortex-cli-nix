@@ -122,18 +122,6 @@ Advantages over official installer (`curl ... | sh`):
 
 **Package:** Pre-built tarballs + Node.js 22 LTS wrapper
 
-## Development
-
-```bash
-git clone https://github.com/xorq-labs/cortex-cli-nix
-cd cortex-cli-nix
-
-nix build                              # Build package
-nix run . -- --version                 # Test
-./scripts/update-version.sh --check    # Check for updates
-nix develop                            # Dev shell
-```
-
 ## Troubleshooting
 
 **Command not found?** Ensure `~/.nix-profile/bin` is in your PATH:
@@ -148,25 +136,6 @@ export PATH="$HOME/.nix-profile/bin:$PATH"
 
 Nix packaging: MIT
 Cortex Code CLI: Proprietary (Snowflake)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-### Setting Up for Development
-
-1. Fork this repository
-2. Make your changes
-3. Test locally with `nix build`
-4. Submit a pull request
-
-### Reporting Issues
-
-If you encounter issues:
-1. Check existing GitHub issues
-2. Verify your Nix installation is up to date
-3. Try rebuilding with `nix build --rebuild`
-4. Report the issue with full error output
 
 ## Acknowledgments
 
