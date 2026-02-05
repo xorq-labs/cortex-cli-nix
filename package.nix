@@ -81,21 +81,14 @@ stdenv.mkDerivation rec {
     # Create wrapper script
     mkdir -p $out/bin
     cat > $out/bin/cortex << 'EOF'
-#!/bin/sh
-# Cortex Code CLI wrapper script
+#!${bash}/bin/bash
 INSTALL_DIR="$out/lib/cortex-cli"
 
-if ! command -v node > /dev/null 2>&1; then
-    echo "Error: Node.js is required to run Cortex Code" >&2
-    exit 1
-fi
-
-# Check if this is Node.js-based distribution
-if [ -f "$INSTALL_DIR/dist/index.js" ]; then
-    exec ${nodejs_22}/bin/node "$INSTALL_DIR/dist/index.js" "$@"
-else
-    # Fallback to binary
+if [ -x "$INSTALL_DIR/cortex" ]; then
     exec "$INSTALL_DIR/cortex" "$@"
+else
+    echo "Error: Cortex Code executable not found" >&2
+    exit 1
 fi
 EOF
 
@@ -103,8 +96,7 @@ EOF
 
     # Substitute paths
     substituteInPlace $out/bin/cortex \
-      --replace-fail '$out' "$out" \
-      --replace-fail '${nodejs_22}' "${nodejs_22}"
+      --replace-fail '$out' "$out"
 
     runHook postInstall
   '';
