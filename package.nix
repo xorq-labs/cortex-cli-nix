@@ -12,7 +12,7 @@
 }:
 
 let
-  version = "1.0.20+045458.1785e665caa4";
+  version = "1.0.22+060403.bb5b5ed02700";
 
   # Platform mapping (Nix system -> Snowflake platform naming)
   platformMap = {
@@ -26,10 +26,10 @@ let
 
   # SHA256 hashes per platform
   hashes = {
-    "darwin-arm64" = "d50f007baec54c1b35a3859a9ad35bd86e787a0fc5ae39ee01d8de82d3914904";
-    "darwin-amd64" = "cdd7d66017d9ec162dcad5b1177889a29c18579cd20c130c751c9882d3ed5aa0";
-    "linux-amd64" = "9c26bee692233bfb3dda1562357cb6f4c4cbbd3333e0cd40348a720813c49f1e";
-    "linux-arm64" = "b0d144b5545c354dbf6f83c1e05fb503a5d560b3e8280934b53883a06ce00ff4";
+    "darwin-arm64" = "6255c5b2a0d6d90875c60ac385799149f3a8731c5941e6beeab97ea84a51532b";
+    "darwin-amd64" = "0f948901f47c5194a9603e6fa03cba6f0399a60eb0a42c599e677a82d19083a9";
+    "linux-amd64" = "528d30600b84b56ea3780a01ca36eba2f222e735d46f965b202f5c2960be2396";
+    "linux-arm64" = "9216baded0051068bbbbb135e0e76344c3228c7cdba68718e5c61e4c5057b9ef";
   };
 
   # URL encode the version (replace + with %2B)
