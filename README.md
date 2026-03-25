@@ -2,7 +2,7 @@
 
 Nix package for [Snowflake Cortex Code CLI](https://ai.snowflake.com/) - AI coding assistant in your terminal.
 
-**🚀 Automatically updated hourly** via GitHub Actions.
+**🚀 Automatically updated daily** via GitHub Actions.
 
 ## Quick Start
 
